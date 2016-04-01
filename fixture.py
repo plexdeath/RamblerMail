@@ -5,5 +5,5 @@ import pytest
 def driver(request):
     driver = webdriver.Firefox()
     driver.implicitly_wait(10)
-    request.addfinalizer(driver.quit)
+    request.addfinalizer(driver.quit)#
     return driver
