@@ -43,8 +43,31 @@ class Application(object):
         except WebDriverException:
             return False
 
-    def send_Mail(self):
+    def verify_Mail(self):
         driver = self.driver
-        driver.find_element_by_xpath("//button[@title=\"Написать письмо\"]").click()
-        driver.find_element_by_xpath("//input[contains(@class,'uiAutocompleteTextInput')]").click
-        driver.find_element_by_xpath("//input[contains(@class,'uiAutocompleteTextInput')]").SendKeys(Keys.Control + "v");
+        writeMail = "//button[@title=\"Написать письмо\"]"
+        komy = "//input[contains(@class,'uiAutocompleteTextInput')]"
+        subject = "subject"
+        attach = "file"
+        send = "//button[@title=\"Отправить письмо\"]"
+        delmail = "//button[@title=\"Удалить письмо\"]"
+
+        if len(driver.find_elements_by_xpath(writeMail)) > 0:
+            driver.find_element_by_xpath(writeMail).click()
+            print "Кнопка Написать присутствует и прожата"
+
+        driver.find_element_by_xpath(komy).click
+        if len(driver.find_elements_by_xpath(komy)) > 0:
+            print "Кому присутствует"
+
+        if len(driver.find_elements_by_id(subject)) > 0:
+            print "Тема присутствует"
+
+        if len(driver.find_elements_by_xpath(send)) > 0:
+            print "Кнопка отправить присутствует"
+
+        if len(driver.find_elements_by_xpath(delmail)) > 0:
+            print "Кнопка удалить присутствует"
+
+
+

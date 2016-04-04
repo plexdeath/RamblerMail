@@ -8,5 +8,8 @@ def test_login(ramblerapp):
     ramblerapp.go_to_home()
     ramblerapp.login(User.Admin())
     assert ramblerapp.is_logged
+    ramblerapp.verify_Mail()
     ramblerapp.logout()
     assert ramblerapp.is_logout
+
+
