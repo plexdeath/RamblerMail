@@ -9,6 +9,7 @@ def test_login(ramblerapp):
     ramblerapp.login(User.Admin())
     assert ramblerapp.is_logged
     ramblerapp.verify_Mail()
+    ramblerapp.send_Mail(User.Mailparameters())
     ramblerapp.logout()
     assert ramblerapp.is_logout
 

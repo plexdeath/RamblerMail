@@ -56,7 +56,7 @@ class Application(object):
             driver.find_element_by_xpath(writeMail).click()
             print "Кнопка Написать присутствует и прожата"
 
-        driver.find_element_by_xpath(komy).click
+        driver.find_element_by_xpath(komy).click()
         if len(driver.find_elements_by_xpath(komy)) > 0:
             print "Кому присутствует"
 
@@ -69,5 +69,14 @@ class Application(object):
         if len(driver.find_elements_by_xpath(delmail)) > 0:
             print "Кнопка удалить присутствует"
 
+    def send_Mail(self, user):
+        driver = self.driver
+        komy = "input.uiAutocompleteTextInput"
+        theme = "subject"
+        area = "composeEditor"
+        send = "//button[@title=\"Отправить письмо\"]"
+        driver.find_element_by_css_selector(komy).send_keys(user.komy)
+        driver.find_element_by_id(theme).send_keys(user.theme)
+        driver.find_element_by_xpath(send).click()
 
 
